@@ -9,6 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+    // TODO: Create a message for within the ranges of: 0-20%, 21-40%, 41-60%, 61-80%, 81-100% so that it's different every time. Maybe add some cute emojis to the message as well.
+
     $rating = rand(0,100);
     if ($rating >= 50) {
         $output = "Congratulations, $name! Your femboy spectrum rating is $rating%. You are a certified femboy!";

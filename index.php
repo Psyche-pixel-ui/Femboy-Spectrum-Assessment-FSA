@@ -19,6 +19,8 @@
     
 </form>
 
+<!-- Display the output of the conditional statement from formhandler.php -->
+
 <?php
 if(isset($_GET["output"])) {
     echo "<hr>";
@@ -26,7 +28,13 @@ if(isset($_GET["output"])) {
 }
 ?>
 
-<!--  -->
+<!--  
+TODO: 
+- The output should show the uploaded photo of the user, the rating, and the message.
+- We need CSS for styling the page and making it look nice.
+    - Make it pink, sparkly, and cute.
+- Add some cute femboy-related images and icons to the page.
+-->
 
 </body>
 </html>
