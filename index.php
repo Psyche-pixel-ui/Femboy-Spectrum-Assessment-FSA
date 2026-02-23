@@ -19,6 +19,13 @@
     
 </form>
 
+<?php
+if(isset($_GET["output"])) {
+    echo "<hr>";
+    echo "<h2>" . htmlspecialchars($_GET["output"]) . "</h2>";
+}
+?>
+
 <!--  -->
 
 </body>

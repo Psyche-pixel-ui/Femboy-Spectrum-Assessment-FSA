@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image = $_FILES["image"];
 
     if (empty($name)) {
+        header("Location: ../index.php");
         exit();
     }
 
@@ -15,8 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $output = "Not a femboy.";
     }
     
-    header("Location: ../index.php");
+    // Back to index.php with the result
+    header("Location: ../index.php?output=" . urlencode($output));
+    exit();
 }
 else {
     header("Location: ../index.php");
+    exit();
 }
