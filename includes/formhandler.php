@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $output = "Congratulations, $name! Your femboy spectrum rating is $rating%. You are a certified femboy!";
     } else {
         $output = "Not a femboy.";
-
     }
     
     header("Location: ../index.php");
