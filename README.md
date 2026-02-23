@@ -1,5 +1,5 @@
 # Femboy Spectrum Assessment (FSA)
-basically a 50-50 femboy roulette
+basically a femboy rating website :3
 
 #### REQUIREMENTS:
 - PHP `https://marketplace.visualstudio.com/items?itemName=DEVSENSE.phptools-vscode`
