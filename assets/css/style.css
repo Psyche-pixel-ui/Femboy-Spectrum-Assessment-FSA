@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;600&display=swap');
+
+:root{
+  --accent: #ff6fcf;
+  --accent-2: #7c4dff;
+  --text: #1b1b1f;
+  --muted: #6b6b79;
+  --radius: 14px;
+  --glass: rgba(255,255,255,0.65);
+  --glass-border: rgba(255,255,255,0.5);
+}
+
+[data-theme="dark"]{
+  --accent: #ff98d5;
+  --accent-2: #9b8bff;
+  --text: #f6f3ff;
+  --muted: #d0c7e8;
+  --glass: rgba(10,8,16,0.45);
+  --glass-border: rgba(255,255,255,0.04);
+  background-color: #0b0712;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  color:var(--text);
+  background: linear-gradient(135deg,#fff0f6 0%, #f9f1ff 100%);
+  -webkit-font-smoothing:antialiased;
+}
+
+.site-header{display:flex;justify-content:flex-end;padding:16px}
+.theme-toggle{background:transparent;border:1px solid transparent;padding:8px 10px;border-radius:10px;cursor:pointer;font-size:18px}
+.theme-toggle:hover{transform:translateY(-2px)}
+
+.hero{padding:48px 20px;text-align:center;display:flex;align-items:center;justify-content:center}
+.hero-inner{max-width:980px;background:linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));border-radius:18px;padding:36px;border:1px solid rgba(255,255,255,0.6);box-shadow:0 12px 40px rgba(18,16,28,0.06);backdrop-filter: blur(8px)}
+.hero h1{font-family:'Poppins',sans-serif;font-size:clamp(28px,4vw,44px);margin:0 0 8px}
+.lead{color:var(--muted);margin-bottom:18px}
+.btn{display:inline-block;text-decoration:none;padding:12px 20px;border-radius:12px;transition:all .18s ease}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 28px rgba(124,77,255,0.16)}
+.btn-primary:hover{transform:translateY(-3px)}
+
+.content{padding:28px;display:flex;justify-content:center}
+.card{width:100%;max-width:720px;background:var(--glass);border:1px solid var(--glass-border);padding:22px;border-radius:var(--radius);box-shadow: 0 10px 30px rgba(24,20,40,0.06)}
+form label{display:block;font-weight:600;margin-bottom:6px}
+input[type="text"], input[type="file"]{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin-bottom:12px;background:transparent;color:var(--text)}
+button[type="submit"]{padding:10px 16px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer}
+
+@media (max-width:640px){
+  .hero-inner{padding:20px}
+  .hero h1{font-size:22px}
+}
+
+/* subtle focus styles for accessibility */
+input:focus, button:focus, .theme-toggle:focus{outline:3px solid rgba(124,77,255,0.12);outline-offset:2px}
+
+/* dark theme background override */
+[data-theme="dark"] body{background:linear-gradient(135deg,#0f0724 0%, #201033 100%)}
