@@ -15,7 +15,6 @@ body.playful-bg{
   position:relative;
   overflow-x:hidden;
 
-  /* aurora gradient */
   background:
     radial-gradient(circle at 20% 30%, #ffc6f0 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, #bcd4ff 0%, transparent 55%),
@@ -23,6 +22,24 @@ body.playful-bg{
     linear-gradient(180deg,#a9a7d8 0%,#9fb5da 60%,#9ccbbf 100%);
 
   animation:aurora 18s ease-in-out infinite alternate;
+} /* ✅ THIS WAS MISSING */
+
+ /* ================= PARTICLES ================= */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* behind all content */
+}
+
+/* make sure all main content is above particles */
+.playful-container,
+.site-header,
+.output-display {
+    position: relative;
+    z-index: 2;
 }
 
 @keyframes aurora{
@@ -51,22 +68,38 @@ body.playful-bg::after{
 }
 
 /* ================= FLOATING CLOUDS ================= */
-body.playful-bg::before{
-  content:"";
-  position:fixed;
-  top:10%;
-  left:-200px;
-  width:300px;
-  height:120px;
-  background:rgba(255,255,255,.3);
-  border-radius:80px;
-  filter:blur(30px);
-  animation:cloudMove 60s linear infinite;
+.cloud {
+  position: fixed;
+  width: 320px;
+  height: 100px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 100px;
+  filter: blur(10px);
+  z-index: 1;
+  pointer-events: none;
+
+  animation: cloudMove linear infinite;
 }
 
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  top: -40px;
+}
+
+.cloud::before { left: 40px; }
+.cloud::after  { left: 140px; }
+
+
+
 @keyframes cloudMove{
-  from{transform:translateX(0)}
-  to{transform:translateX(140vw)}
+  from { transform: translateX(-300px); }
+  to   { transform: translateX(140vw); }
 }
 
 /* ================= HEADER ================= */
@@ -145,6 +178,31 @@ body.playful-bg::before{
 }
 
 /* ================= TITLE ================= */
+.rainbow-text {
+    background: linear-gradient(
+        90deg,
+        #ff0000,
+        #ff7f00,
+        #ffff00,
+        #00ff00,
+        #0000ff,
+        #4b0082,
+        #8f00ff
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+/* subtitle beside rainbow title */
+.title-sub {
+    color: #550667;
+    font-weight: 700;
+    text-shadow:
+        0 0 6px rgba(255,255,255,0.7),
+        0 0 12px rgba(255,192,203,0.6),
+        0 0 18px rgba(173,216,230,0.6);
+}
 .title-banner{
   background:#f2cde1;
   border-radius:40px;
@@ -164,7 +222,17 @@ body.playful-bg::before{
   background-clip:text;
   color:transparent;
   text-shadow:0 0 20px rgba(255,200,255,.35);
+  animation: titleWiggle 6s ease-in-out infinite;
+
 }
+@keyframes titleWiggle {
+  0%, 100% { transform: skewX(6deg) rotate(0deg); }
+  20%      { transform: skewX(6deg) rotate(0.6deg); }
+  40%      { transform: skewX(6deg) rotate(-0.6deg); }
+  60%      { transform: skewX(6deg) rotate(0.4deg); }
+  80%      { transform: skewX(6deg) rotate(-0.4deg); }
+}
+
 
 /* ================= GRID ================= */
 .form-boxes{
@@ -215,6 +283,32 @@ body.playful-bg::before{
 }
 
 .upload-label{background:#f6d3b2}
+@keyframes typing {
+  0%   { width: 0; }
+  40%  { width: 100%; } /* typing */
+  60%  { width: 100%; } /* pause */
+  100% { width: 0; }    /* erase */
+}
+
+@keyframes caretBlink {
+  50% { border-color: transparent; }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+
+  border-right: 3px solid #b8578c;
+  padding-right: 6px;
+
+  width: 0;
+
+  animation:
+    typing 5s steps(22, end) infinite,
+    caretBlink 0.8s step-end infinite;
+}
+
 
 /* ================= INPUT ================= */
 .form-input{
@@ -249,6 +343,12 @@ body.playful-bg::before{
   0%,100%{box-shadow:0 0 0 0 rgba(200,120,255,.4)}
   50%{box-shadow:0 0 18px 6px rgba(200,120,255,.2)}
 }
+
+.file-button-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
 
 /* ================= ATTENTION ================= */
 .attention-box{
@@ -296,11 +396,41 @@ body.playful-bg::before{
 
 /* ================= OUTPUT ================= */
 .output-display{
-  margin:20px;
+  display:flex;
+  align-items:flex-end;
+  gap:20px;
+
+  max-width:900px;
+  margin:30px auto;
   padding:20px;
+
   background:white;
   border-radius:16px;
   box-shadow:0 10px 25px rgba(0,0,0,.15);
+  flex-wrap:wrap;
+}
+
+.output-character{
+  width:120px;
+  height:auto;
+  animation:floaty 4s ease-in-out infinite;
+}
+
+.output-text{
+  position:relative;
+  flex:1;
+  padding:20px 24px;
+  background:#ffeaf6;
+  border-radius:16px;
+  font-family:'Poppins';
+  font-weight:700;
+
+  /* NEW */
+  font-size:1.25rem;
+  line-height:1.6;
+  min-height:110px; /* matches Astolfo height visually */
+  display:flex;
+  align-items:center;
 }
 
 /* ================= MOBILE ================= */
