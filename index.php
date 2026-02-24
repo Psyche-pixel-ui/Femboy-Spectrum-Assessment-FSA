@@ -1,55 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Femboy Spectrum Assessment (FSA)</title>
-    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Femboy Spectrum Assessment (FSA)</title>
+
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+
+<body class="playful-bg">
 
 <header class="site-header">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+<button id="theme-toggle" class="theme-toggle">🌙</button>
 </header>
 
-<section class="hero">
-    <div class="hero-inner">
-        <h1>Femboy Spectrum Assessment (FSA)</h1>
-        <p class="lead">Upload a selfie and receive a friendly, respectful evaluation with a cute aesthetic.</p>
-        <a class="btn btn-primary" href="#form">Get started</a>
-    </div>
-</section>
+<div class="playful-container">
 
-<main class="content">
+<div class="left-section">
+<div class="character-group">
+<img src="assets/images/astolfo.gif" class="character astolfo">
+</div>
 
-<form id="form" action="includes/formhandler.php" method="post" enctype="multipart/form-data" class="card">
-    <label for="name">What is your name?</label><br>
-    <input type="text" id="name" name="name" required><br><br>
+<div class="rainbow-bar"></div>
 
-    <label for="image">Can I have ur cute selfie photo?</label><br>
-    <input type="file" name="image" required><br><br>
+<div class="character-group">
+<img src="assets/images/femboy_pixel_art_by_ghostytoons_djgzbss-fullview.png" class="character pixel-art">
+</div>
+</div>
 
-    <button type="submit" name="submit">Analyze Image</button>
-    
+<div class="right-section">
+
+<div class="title-banner">
+<div class="title-inner">
+<span style="color:#ff0000">Fem</span><span style="color:#00ff00">boy</span> Spectrum Assessment (FSA)
+</div>
+</div>
+
+<form action="includes/formhandler.php" method="post" enctype="multipart/form-data" class="form-boxes">
+
+<div class="form-box name-box">
+<div class="form-label">What is your name?</div>
+<input type="text" name="name" class="form-input" required>
+</div>
+
+<div class="form-box upload-box">
+<div class="form-label upload-label">Can I have ur cute selfie photo?</div>
+
+<input type="file" id="image" name="image" class="file-input" required>
+<label for="image" class="file-label">Choose File ❤️</label>
+
+<div class="attention-box">
+<div>⚠️</div>
+<div class="attention-text">ATTENTION!</div>
+</div>
+
+<button type="submit" name="submit" class="analyze-btn">Analyze Image</button>
+</div>
+
 </form>
 
-<!-- Display the output of the conditional statement from formhandler.php -->
+</div>
+</div>
 
 <?php
 if(isset($_GET["output"])) {
-    echo "<hr>";
-    echo "<h2>" . htmlspecialchars($_GET["output"]) . "</h2>";
+echo '<div class="output-display"><h2>' . htmlspecialchars($_GET["output"]) . '</h2></div>';
 }
 ?>
-    </main>
-<!--  
-TODO: 
-- The output should show the uploaded photo of the user, the rating, and the message.
-- We need CSS for styling the page and making it look nice.
-    - Make it pink, sparkly, and cute.
-- Add some cute femboy-related images and icons to the page.
--->
+
 <script src="assets/js/theme-toggle.js"></script>
+<script src="assets/js/ui-prompt.js"></script>
+
 </body>
 </html>
