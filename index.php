@@ -8,7 +8,7 @@
 <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
 
-<!-- ==================== NEW CODE START: Popup CSS ==================== -->
+<!--Popup CSS-->
 <style>
 #popup-overlay {
     display: none;
@@ -108,19 +108,19 @@
     100% { transform: rotate(2deg)  scale(1.04); }
 }
 </style>
-<!-- ==================== NEW CODE END: Popup CSS ==================== -->
+
 
 </head>
 
 <body class="playful-bg">
 
-<!-- ==================== NEW CODE START: Popup HTML ==================== -->
+<!--Popup HTML-->
 <div id="popup-overlay">
     <div id="popup-box">
         <div id="popup-message"></div>
     </div>
 </div>
-<!-- ==================== NEW CODE END: Popup HTML ==================== -->
+
 
 <div id="particles-js"></div> <!-- particles container -->
 
@@ -232,7 +232,7 @@ particlesJS("particles-js", {
   "retina_detect": true
 });
 
-// ==================== NEW CODE START: Popup JavaScript ====================
+// == Popup JavaScript ==
 
 function showPopup(message) {
     var overlay = document.getElementById("popup-overlay");
@@ -267,8 +267,6 @@ document.querySelector("form").addEventListener("submit", function(e) {
         showPopup("📸 WHERE IS THE SELFIE?? Upload a photo!! 😭💔");
     }
 });
-
-// ==================== NEW CODE END: Popup JavaScript ====================
 </script>
 
 
